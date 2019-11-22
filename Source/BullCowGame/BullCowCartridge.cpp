@@ -15,5 +15,6 @@ void UBullCowCartridge::OnInput(const FString &Input) // When the player hits en
     if (Input == HiddenWord)
     {
         PrintLine(TEXT("You guessed the right word!"));
+        PrintLine(TEXT("You Win!"));
     }
 }
