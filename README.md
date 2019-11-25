@@ -6,7 +6,7 @@
 
 ## Description
 
-_This is a C++ based game in Unreal Engine 4. The game was created while following the Unreal 4.22 C++ Developer course on gamedev.tv _
+_This is a C++ based game in Unreal Engine 4. The game was created while following the Unreal 4.22 C++ Developer course on gamedev.tv_
 
 ## Technologies Used
 
