@@ -5,17 +5,13 @@
 void UBullCowCartridge::BeginPlay() // When the game starts
 {
     Super::BeginPlay();
-    GetValidWords(Words);// Validate Words
-    SetupGame();
 
-    PrintLine(TEXT("The number of possible words is %i"), Words.Num()); // Number of words in the Words list
-    PrintLine(TEXT("The number of valid words is %i"), GetValidWords(Words).Num()); // Number of valid words in the Words list
-    PrintLine(TEXT("The HiddenWord is: %s."), *HiddenWord); // Debug Line
+    SetupGame();
 }
 
-void UBullCowCartridge::OnInput(const FString& PlayerInput) // When the player hits enter
+void UBullCowCartridge::OnInput(const FString &PlayerInput) // When the player hits enter
 {
-    if(bGameOver)
+    if (bGameOver)
     {
         ClearScreen();
         SetupGame();
@@ -28,7 +24,7 @@ void UBullCowCartridge::OnInput(const FString& PlayerInput) // When the player h
 
 void UBullCowCartridge::SetupGame()
 {
-    HiddenWord = TEXT("cakes");
+    HiddenWord = GetValidWords(Words)[FMath::RandRange(0, GetValidWords(Words).Num() - 1)];
     Lives = HiddenWord.Len();
     bGameOver = false;
 
@@ -37,6 +33,7 @@ void UBullCowCartridge::SetupGame()
     PrintLine(TEXT("Guess the %i letter word!"), HiddenWord.Len());
     PrintLine(TEXT("You have %i Lives."), Lives);
     PrintLine(TEXT("Type in your guess and \npress enter to continue..."));
+    PrintLine(TEXT("The HiddenWord is: %s."), *HiddenWord);                         // Debug Line
 }
 
 void UBullCowCartridge::EndGame()
@@ -53,27 +50,27 @@ void UBullCowCartridge::ProcessGuess(const FString &Guess)
         EndGame();
         return;
     }
-    
+
     if (Guess.Len() != HiddenWord.Len())
     {
         PrintLine(TEXT("The hidden word is %i letters long"), HiddenWord.Len());
         PrintLine(TEXT("Sorry, try guessing again! \nYou have %i lives remaining."), Lives);
-        return;                
+        return;
     }
 
     // Check If Isogram
-    if(!IsIsogram(Guess))
+    if (!IsIsogram(Guess))
     {
         PrintLine(TEXT("No repeating letters, guess again!"));
         return;
     }
-    
+
     // Remove Life
     PrintLine(TEXT("You have lost a life!"));
     --Lives;
 
     // Check If Lives > 0
-    if(Lives <= 0)
+    if (Lives <= 0)
     {
         ClearScreen();
         PrintLine(TEXT("You have no lives left!"));
@@ -93,23 +90,23 @@ bool UBullCowCartridge::IsIsogram(const FString Word) const
     {
         for (int32 Comparison = Index + 1; Comparison < Word.Len(); Comparison++)
         {
-            if(Word[Index] == Word[Comparison])
+            if (Word[Index] == Word[Comparison])
             {
                 return false;
             }
         }
     }
-    
+
     return true;
 }
 
-TArray<FString> UBullCowCartridge::GetValidWords(const TArray<FString>& WordList) const
+TArray<FString> UBullCowCartridge::GetValidWords(const TArray<FString> &WordList) const
 {
     TArray<FString> ValidWords;
 
     for (FString Word : WordList)
     {
-        if(Word.Len() >= 4 && Word.Len() <= 8 && IsIsogram(Word))
+        if (Word.Len() >= 4 && Word.Len() <= 8 && IsIsogram(Word))
         {
             ValidWords.Emplace(Word);
         }
