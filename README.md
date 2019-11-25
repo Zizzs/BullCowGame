@@ -1,19 +1,19 @@
-# _{Bull Cow Game}_
+# _Bull Cow Game_
 
-#### _{A C++ Based Unreal Engine 4 Project}, {11/24/2019}_
+#### _A C++ Based Unreal Engine 4 Project, 11/24/2019_
 
-#### By _**{Alex Williams}**_
+#### By _**Alex Williams**_
 
 ## Description
 
-_{This is a C++ based game in Unreal Engine 4. The game was created while following the Unreal 4.22 C++ Developer course on gamedev.tv }_
+_This is a C++ based game in Unreal Engine 4. The game was created while following the Unreal 4.22 C++ Developer course on gamedev.tv _
 
 ## Technologies Used
 
-_{C++, VSCode, Unreal Engine 4}_
+_C++, VSCode, Unreal Engine 4_
 
 ### License
 
-_{MIT License}_
+_MIT License_
 
-Copyright (c) 2019 **_{Alex Williams}_**
+Copyright (c) 2019 **_Alex Williams_**
